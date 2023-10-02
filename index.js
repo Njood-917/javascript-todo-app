@@ -1,44 +1,61 @@
- const todoForm = document.getElementById('todoForm');
- const todoList = document.querySelector('.todoList');
- 
+ const addTask = document.getElementById('Add-task');
+ const taskContainer = document.getElementById('task-container');
+ const inputTask = document.getElementById('input-task');
 
- document.getElementById('Add').addEventListener('click', function(event){
-    event.preventDefault();
-    const text = document.querySelector('#text').value;
-    let newItem = document.createElement('li');
-    newItem.innerText=text;
-    todoList.appendChild(newItem);
-   
- // Add checkbox
-  const checkBoxElemnt = document.createElement('input');
-  checkBoxElemnt.type = "checkbox";
-  checkBoxElemnt.classList = 'checkbox';
-  newItem.appendChild(checkBoxElemnt);
+ //event listener 
 
-   // Add delet
-  const deletElemnt = document.createElement('input');
-  deletElemnt.type = "button";
-  deletElemnt.classList = 'deletBtn';
-  deletElemnt.value = 'delet';
-  newItem.appendChild(deletElemnt);
+ addTask.addEventListener ('click' , function(event){
 
-  const checkboxes = document.getElementsByClassName('checkbox');
-  for (const checkbox of checkboxes) {
-      checkbox.addEventListener('click', function(event) {
-          // Your code to handle the click event for each checkbox
-          // For example, you can toggle the 'complete' class on the parent todo item
-          const listItem = event.target.closest('.newItem');
-          if (listItem) {
-              listItem.classList.toggle('complete');
-            }
-        });
+    let task = document.createElement('div');
+    task.classList.add('task');
+
+    let li = document.createElement ('li');
+    li.innerText = `${inputTask .value }`;
+
+    task.appendChild(li);
+
+    //add checkBtn 
+
+    let checkButton = document.createElement("button");
+    checkButton.innerHTML = '<i class="fa-solid fa-check"></i>';
+    checkButton.classList.add('checkTask');
+    task.appendChild(checkButton);
+
+ //add deletBtn 
+    let deletButton = document.createElement("button");
+    deletButton.innerHTML = '<i class="fa-solid fa-x"></i>';
+    deletButton.classList.add('deletTask');
+    task.appendChild(deletButton);
+
+
+    // convert
+
+    if (inputTask.value ===""){
+        alert ('please enter a valid value');
+    } else {
+        taskContainer.appendChild(task);
+
     }
+    inputTask.value ="";
 
 
- todoForm.reset();
-});
+    //eventlistener for checkbutton
 
- 
+    checkButton.addEventListener ('click' , function(){
+        checkButton.parentElement.style.textDecoration ="line-through";
+
+
+    })
+     //eventlistener for deletbutton
+        
+    deletButton.addEventListener ('click' , function(e){
+        let target = e.target;
+        target.parentElement.parentElement.remove();
+   
+
+    });
 
 
 
+
+ });
