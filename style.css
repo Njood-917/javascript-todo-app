@@ -41,6 +41,7 @@ form #Add-task{
   font-weight: 600;
   margin-bottom: 15px; /*some change*/
   border: 2px solid palevioletred;
+  cursor: pointer;
 
 }
 form #Add-task:hover{
@@ -62,6 +63,10 @@ form #Add-task:hover{
   
 }
 
+.task.done {
+  background-color: aqua;
+}
+
 .task li{
   list-style: none;
   flex: 4;
@@ -74,15 +79,18 @@ form #Add-task:hover{
   border-radius: 10px;
   background-color: #fff;
   
+  
 }
-.task .checkTask{
-  color: orange;
-  margin-right:5px ;
+.task .checkboxInput{
+  color: orange;  
+  margin-right:5px;
+  /* height: 15px;
+  width: 30px; */
   border: 1px solid palevioletred;;
 
 }
 
-.task .checkTask:hover{
+.task .checkboxInput:hover{
   cursor: pointer;
   background-color: orange;
   color: white;
@@ -99,3 +107,5 @@ form #Add-task:hover{
   color: white;
   background-color: red;
 }
+
+
